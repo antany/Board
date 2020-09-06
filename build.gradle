@@ -1,0 +1,25 @@
+defaultTasks 'mergePackage'
+
+task copyStatic(type: Copy){
+	dependsOn ':ui:npm_run_build'
+	
+	from 'ui/build'
+    into '/api/src/main/resources/static'
+}
+
+
+task renamePackage(type: Copy){
+	dependsOn ':api:build'
+	from file('api/build/libs/api-0.0.1-SNAPSHOT.jar')
+	into file('build')
+	rename ('api-0.0.1-SNAPSHOT.jar','example.jar')
+}
+
+
+task mergePackage(type: DefaultTask){
+	dependsOn copyStatic
+	dependsOn renamePackage
+	doLast(){
+		println "Package Created.."
+	}
+}

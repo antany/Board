@@ -1,0 +1,17 @@
+plugins {
+  id "com.github.node-gradle.node" version "2.2.4"
+}
+
+node {
+    version = '14.9.0'
+    npmVersion = '6.14.8'
+    download = true
+}
+
+npm_run_build {
+    inputs.files fileTree("public")
+    inputs.files fileTree("src")
+    inputs.file 'package.json'
+    inputs.file 'package-lock.json'
+    outputs.dir 'build'
+}
