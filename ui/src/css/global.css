@@ -1,0 +1,7 @@
+@import url("../../node_modules/bootstrap/dist/css/bootstrap.css");
+
+body {
+  margin: 0;
+  color: #858585;
+  background-color: #1e1e1e;
+}
