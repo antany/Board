@@ -22,22 +22,18 @@ class Footer extends Component {
   render() {
     return (
       <footer className={styles["command-footer"]}>
-        <div className="container-fluid">
-          <div className="row">
-            <input
-              type="text"
-              ref={(input) => {
-                this.nameInput = input;
-              }}
-              value={this.state.command}
-              onChange={this.updateCommand}
-              onKeyUp={this.enterPressed}
-              placeholder="Enter command here..."
-              className={styles["command-footer"]}
-              style={{ marginLeft: "10px" }}
-            />
-          </div>
-        </div>
+        <input
+          type="text"
+          ref={(input) => {
+            this.nameInput = input;
+          }}
+          value={this.state.command}
+          onChange={this.updateCommand}
+          onKeyUp={this.enterPressed}
+          placeholder="Enter command here..."
+          className={styles["command-footer"]}
+          style={{ marginLeft: "10px" }}
+        />
       </footer>
     );
   }

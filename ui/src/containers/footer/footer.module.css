@@ -4,11 +4,20 @@
   width: 100%;
   height: 50px; /* Set the fixed height of the footer here */
   line-height: 50px; /* Vertically center the text there */
-  background-color: #252525;
-  color: #ffffff;
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-text-color);
   margin-top: 6px;
   margin-left: 0px;
   padding-left: 0px;
   border: 0px;
   outline: none;
+  font: inherit;
+}
+
+@media only screen and (max-width: 768px) {
+  .command-footer {
+    font-size: 30px;
+    height: 80px;
+    line-height: 80px;
+  }
 }

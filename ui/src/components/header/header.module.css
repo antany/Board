@@ -1,0 +1,35 @@
+.header {
+  height: 60px;
+  width: 100%;
+  background-color: var(--secondary-bg-color);
+}
+
+.vertical-center {
+  transform: translateY(25%);
+}
+
+.header-text {
+  margin-top: 10px;
+  float: left;
+  font-size: 25px;
+  margin-left: 2px;
+  color: var(--secondary-text-color);
+}
+
+.header-image {
+  margin-top: 5px;
+  width: 30px;
+  height: 30px;
+  filter: brightness(200%);
+  float: left;
+}
+
+@media only screen and (max-width: 768px) {
+  .header-text {
+    margin-left: 0px;
+  }
+
+  .header-image {
+    margin-left: 0px;
+  }
+}
