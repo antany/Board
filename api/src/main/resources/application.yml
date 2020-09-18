@@ -1,1 +1,18 @@
+server:
+  port:  8080
 
+spring:
+  h2:
+    console:
+      enabled:  true
+      settings.web-allow-others:  true
+  datasource:
+    url:  jdbc:h2:file:d:/temp/board.db
+    driveClassName: org.h2.Driver
+    username:  sa
+    password:  test
+    initialize:  true
+  jpa:
+    database-platform:  org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: create
+    show-sql: true
