@@ -1,6 +1,42 @@
 .card {
-  width: 600px;
-  height: 600px;
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 5%;
+  border: 1px solid var(--main-text-color);
+  color: var(--secondary-text-color);
+  --card-header-bg-color: #ffffffaa;
+  --card-header-text-color: #000000;
+  font-family: inherit;
+}
+
+.card .header {
+  height: 40px;
+  width: 100%;
+  background-color: var(--card-header-bg-color);
+  color:var(--card-header-text-color);
+  padding-top: 10px;
+  padding-left: 5px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.card .element {
+  font-size: 20px;
+  margin-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 99%;
+  
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box; 
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 90%;
+    margin-top: 10%;
+  }
 }

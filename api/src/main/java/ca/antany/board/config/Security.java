@@ -26,7 +26,12 @@ public class Security extends WebSecurityConfigurerAdapter {
 				
 				.antMatchers("/api/auth", "/api/auth/**").permitAll()
 				.antMatchers("/ui/auth", "/ui/auth/**").permitAll()
+				.antMatchers("/static/**").permitAll()
+				.antMatchers("/favicon.ico","/manifest.json").permitAll()  
 				.antMatchers("/", "/**").authenticated().and()
+				.formLogin()
+	            .loginPage("/ui/auth")
+	            .and()
 				.addFilter(new AuthenticationFilter(authenticationManager()))
 				.addFilter(new AuthorizationFilter(authenticationManager())).sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -36,8 +41,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web
         .ignoring()
-        .antMatchers("/h2-console/**")
-        .antMatchers("/static/**")
-        .antMatchers("/favicon.ico","/manifest.json");
+        .antMatchers("/h2-console/**");
+        
 	}
 }

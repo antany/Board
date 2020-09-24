@@ -1,12 +1,27 @@
-import React, { Component } from "react";
-
+import React from "react";
+import FormInput from "../forminput/forminput";
 import styles from "./card.module.css";
 
-class Card extends Component {
-  state = {};
-  render() {
-    return <div className={styles.card}>test</div>;
-  }
-}
+const Card = (props) => {
+
+  let inputs = null;
+  inputs = props.inputs.map((row)=>{
+    return (
+      <div className={styles.element}>
+          {row.showDisplayName && row.displayName}
+          <FormInput {...row}/>
+      </div>
+    )
+  });
+
+  return (
+    <div className={styles.card}>
+      <div className={styles.header}>{props.header}</div>
+      <div className={styles.body}>
+        {inputs}
+      </div>
+    </div>
+  );
+};
 
 export default Card;

@@ -13,11 +13,3 @@
   outline: none;
   font: inherit;
 }
-
-@media only screen and (max-width: 768px) {
-  .command-footer {
-    font-size: 30px;
-    height: 80px;
-    line-height: 80px;
-  }
-}

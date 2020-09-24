@@ -1,0 +1,15 @@
+.forminput{
+    width: 100%;
+    height: 30px;
+    font-family: inherit;
+    font-size: 20px;
+    border: none;
+    background-color: var(--main-text-color);
+}
+
+@media only screen and (max-width: 600px) {
+    .forminput {
+      width: 97%;
+    }
+  }
+  
