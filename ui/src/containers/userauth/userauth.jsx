@@ -1,44 +1,28 @@
 import React, { Component } from "react";
-import Card from "../cards/card";
+
+import styles from './userauth.module.css';
 
 class UserAuth extends Component {
   state = {
-    cardProperty: {
-      header: "Please Login",
-      showDisplayName: false,
-      inputs: [
-          {
-            displayName: "Username",
-            placeHolder: "Username",
-            type: "text",
-            required: true,
-            value:null
-          },
-          {
-            displayName: "Password",
-            placeHolder: "Password",
-            type: "password",
-            required: true,
-            value:null
-          }
-      ],
-      button: [
-          {
-              displayName: "Login",
-              action:""
-          },
-          {
-              displayName: "Register",
-              action:""
-          }
-      ]
+  }
 
-    },
-  };
   render() {
     return (
-      <div>
-        <Card {...this.state.cardProperty} />
+      <div className={styles.container}>
+        <h1>Sign In</h1>
+        <form method="post">
+          <div className={styles["input-filed"]}>
+            <input type="text" required/>
+            <label>Username</label>
+          </div>
+          <div className={styles["input-filed"]}>
+            <input type="password" required/>
+            <label>Password</label>
+          </div>
+           <a href="/ui/register">Register</a>
+          <input type="submit" className={styles["btn-login"]} value="Login"/>
+          
+        </form>
       </div>
     );
   }

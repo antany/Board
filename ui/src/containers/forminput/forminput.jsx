@@ -11,7 +11,9 @@ const FormInput = (props) => {
             break;
         case 'password':
             display = <input type="password" className={styles.forminput} placeholder={props.displayName}/> 
-            break;    
+            break;  
+        default:
+            break;      
     }
 
     return ( 

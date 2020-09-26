@@ -3,6 +3,9 @@
   --main-text-color: #858585;
   --secondary-bg-color: #252525;
   --secondary-text-color: #ffffff;
+  --btn-dark-color:#0068bf;
+  --btn-dark-light:#6ec5ff;
+  --btn-dark-primary:#2195f2;
 }
 
 body {

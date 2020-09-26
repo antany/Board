@@ -5,6 +5,7 @@ import styles from "./card.module.css";
 const Card = (props) => {
 
   let inputs = null;
+  if(props.inputs!==undefined){
   inputs = props.inputs.map((row)=>{
     return (
       <div className={styles.element}>
@@ -13,6 +14,7 @@ const Card = (props) => {
       </div>
     )
   });
+}
 
   return (
     <div className={styles.card}>
