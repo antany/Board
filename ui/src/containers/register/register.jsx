@@ -1,5 +1,10 @@
+import axios from "axios";
 import React, { Component } from "react";
+import { withRouter } from "react-router";
 import Form from "../../components/form/form";
+import {getURL as URL} from '../../constants/urlconstants';
+import {REGISTER} from '../../constants/urlstringconstants';
+ 
 
 class RegisterForm extends Component {
 
@@ -18,6 +23,29 @@ class RegisterForm extends Component {
     let element = {...elements[index],value:event.target.value};
     elements[index] = element;
     this.setState({form:{...this.state.form,fromElements:elements}});
+    
+  }
+
+  onCancelEvent=(event)=>{
+    this.props.history.push("/ui/auth");
+
+  }
+
+  onSubmitEvent=(e)=>{
+    e.preventDefault();
+    const data={
+      username:{
+        value: this.state.form.fromElements[0].value
+      },
+      password:{
+        value: this.state.form.fromElements[1].value
+      },
+      firstname:{
+        value: this.state.form.fromElements[2].value
+      },
+
+    }
+    axios.post(URL(REGISTER),data,null).then((reponse)=>this.props.history.push("/ui/auth"));
     
   }
 
@@ -70,26 +98,21 @@ class RegisterForm extends Component {
         {
           label:"Cancel",
           action:this.onCancelEvent,
-          type:"button"
+          type:"button",
+          style:"btn-cancel"
         },
         {
-          label:"Submit",
-          action:this.onSubmitEvent,
-          type:"submit"
+          label:"Register",
+          action:()=>{return false},
+          type:"submit",
+          style:"btn-submit"
         }
       ]
 
     }
   }
 
-  onCancelEvent=(event)=>{
-
-  }
-
-  onSubmitEvent=(e)=>{
-    console.log(e)
-    e.preventDefault();
-  }
+ 
 
   render() {
     return (
@@ -98,4 +121,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default RegisterForm;
+export default withRouter(RegisterForm);

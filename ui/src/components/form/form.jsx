@@ -19,7 +19,7 @@ const Form = (props) => {
 
     buttons = props.buttons.map(button=>{
         return(
-            <input key={button.label} type={button.type}  className={styles["btn-login"]} value={button.label}/>
+            <input key={button.label} type={button.type}  className={styles["btn-login"]+" "+styles[button.style]} value={button.label} onClick={button.action}/>
         )
     });
 
@@ -39,3 +39,5 @@ const Form = (props) => {
 }
  
 export default Form;
+
+

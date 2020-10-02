@@ -4,18 +4,19 @@ import { connect } from "react-redux";
 import {LOGIN} from '../../constants/urlstringconstants';
 import {getURL as URL} from '../../constants/urlconstants';
 
-import styles from './userauth.module.css';
+import { withRouter } from "react-router";
+import Form from "../../components/form/form";
 
 class UserAuth extends Component {
-  state = {
-    username:"",
-    password:""
-  }
 
-  onChangeEvent = (event,name)=>{
-    this.setState({[name]:event.target.value})
-  } 
-  
+  onElementChangeEvent=(event)=>{
+    const index = this.state[event.target.name]
+    let elements = [...this.state.form.fromElements];
+    let element = {...elements[index],value:event.target.value};
+    elements[index] = element;
+    this.setState({form:{...this.state.form,fromElements:elements}});
+    
+}
 
   onSubmitEvent=(e)=>{
     e.preventDefault();
@@ -25,25 +26,62 @@ class UserAuth extends Component {
     }})
   }
 
-  render() {
-
+  componentDidMount(){
     
+    this.state.form.fromElements.map((element,index)=>{
+      return this.setState({[element.name]:index})
+    });
+  }
+
+  state = {
+    form:{
+      header: "Login",
+      method: "post",
+      formSubmit:this.onSubmitEvent,
+      onElementChangeEvent: this.onElementChangeEvent,
+      fromElements:[
+        {
+          type:"text",
+          isRequired: true,
+          value:"",
+          name:"username",
+          label:"Username"
+        },
+        {
+          type:"password",
+          isRequired: true,
+          value:"",
+          name:"password",
+          label:"Password"
+        }
+      ],
+      buttons:[
+        {
+          label:"Register",
+          action:()=>{this.props.history.push("/ui/auth/register")},
+          type:"button",
+          style:"btn-cancel"
+        },
+        {
+          label:"Login",
+          action:()=>{return false},
+          type:"submit",
+          style:"btn-submit"
+        }
+      ]
+    }  
+  }
+
+  onChangeEvent = (event,name)=>{
+    this.setState({[name]:event.target.value})
+  } 
+  
+
+ 
+
+  render() {
     return (
-      <div className={styles.container}>
-        <h1>Sign In</h1>
-        <form method="post" onSubmit={this.onSubmitEvent}>
-          <div className={styles["input-filed"]}>
-            <input type="text" required value={this.state.username} onChange={(event)=>this.onChangeEvent(event,'username')}/>
-            <label>Username</label>
-          </div>
-          <div className={styles["input-filed"]}>
-            <input type="password" required value={this.state.password} onChange={(event)=>this.onChangeEvent(event,'password')}/>
-            <label>Password</label>
-          </div>
-          <a href="/ui/auth/register"><span className="register">Register</span></a>
-          <input type="submit"  className={styles["btn-login"]} value="Login"/>
-        </form>
-      </div>
+      <Form {...this.state.form}></Form>
     );
   }
 }
@@ -61,4 +99,4 @@ const mapDispatchAction = (dispatch)=>{
   };  
 }
 
-export default connect(mapStateToProps,mapDispatchAction)(UserAuth);
+export default connect(mapStateToProps,mapDispatchAction)(withRouter(UserAuth));
