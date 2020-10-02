@@ -43,6 +43,12 @@ class RegisterForm extends Component {
       firstname:{
         value: this.state.form.fromElements[2].value
       },
+      lastname:{
+        value: this.state.form.fromElements[3].value
+      },
+      email:{
+        value: this.state.form.fromElements[4].value
+      },
 
     }
     axios.post(URL(REGISTER),data,null).then((reponse)=>this.props.history.push("/ui/auth"));
